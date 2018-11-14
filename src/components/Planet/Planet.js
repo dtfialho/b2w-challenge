@@ -7,11 +7,17 @@ const planet = props => (
 
     <h1>{props.planet.name}</h1>
 
-    <p><strong>Population:</strong> {props.planet.population}</p>
+    <p>
+      <strong>Population:</strong> {props.planet.population}
+    </p>
 
-    <p><strong>Climate:</strong> {props.planet.climate}</p>
+    <p>
+      <strong>Climate:</strong> {props.planet.climate}
+    </p>
 
-    <p><strong>Terrain:</strong> {props.planet.terrain}</p>
+    <p>
+      <strong>Terrain:</strong> {props.planet.terrain}
+    </p>
 
   </article>
 );

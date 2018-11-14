@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchPlanets } from '../../actions';
+import { fetchPlanets, selectPlanet } from '../../actions';
 import Planet from '../../components/Planet/Planet';
 import PlanetSelected from '../PlanetSelected/PlanetSelected';
 import './PlanetList.styl';
@@ -11,12 +11,21 @@ export class PlanetList extends Component {
     this.props.fetchPlanets();
   }
 
+  selectPlanet = (planet) => {
+    this.props.selectPlanet(planet);
+  }
+
   render() {
     return (
       <Fragment>
 
         <section className="PlanetList">
-          {this.props.planets.map(planet => <Planet planet={planet} key={planet.name} />)}
+          {this.props.planets.map(planet => (
+            <Planet
+              planet={planet}
+              key={planet.name}
+              click={() => this.selectPlanet(planet)} />
+          ))}
         </section>
 
         <PlanetSelected />
@@ -28,6 +37,7 @@ export class PlanetList extends Component {
 PlanetList.propTypes = {
   planets: PropTypes.array,
   fetchPlanets: PropTypes.func,
+  selectPlanet: PropTypes.func,
 };
 
 const mapStateToProps = ({ planetsInfo }) => ({
@@ -36,4 +46,4 @@ const mapStateToProps = ({ planetsInfo }) => ({
   next: planetsInfo.next,
 });
 
-export default connect(mapStateToProps, { fetchPlanets })(PlanetList);
+export default connect(mapStateToProps, { fetchPlanets, selectPlanet })(PlanetList);
