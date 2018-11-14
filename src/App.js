@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import Layout from './containers/Layout/Layout';
 import PlanetList from './containers/PlanetList/PlanetList';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <Layout>
         <PlanetList />
-      </div>
+      </Layout>
     );
   }
 }
