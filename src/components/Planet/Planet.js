@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const planet = props => (
   <div>
-    {props.planetName}
+    {props.planet.name}
   </div>
 );
 
 planet.propTypes = {
-  planetName: PropTypes.string,
+  planet: PropTypes.object,
 };
 
 export default planet;

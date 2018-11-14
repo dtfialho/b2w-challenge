@@ -1,20 +1,19 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { fetchPlanets } from '../../actions';
 import Planet from '../../components/Planet/Planet';
 import PlanetSelected from '../PlanetSelected/PlanetSelected';
 
 export class PlanetList extends Component {
-  state = {
-    planets: [
-      'Tatooine',
-      'Alderaan',
-    ],
+  componentWillMount() {
+    this.props.fetchPlanets();
   }
 
   render() {
     return (
       <Fragment>
         <div>
-          {this.state.planets.map(planet => <Planet planetName={planet} />)}
+          {this.props.planets.map(planet => <Planet planet={planet} />)}
         </div>
         <PlanetSelected />
       </Fragment>
@@ -22,4 +21,10 @@ export class PlanetList extends Component {
   }
 }
 
-export default PlanetList;
+const mapStateToProps = ({ planetsInfo }) => ({
+  planets: planetsInfo.planets,
+  previous: planetsInfo.previous,
+  next: planetsInfo.next,
+});
+
+export default connect(mapStateToProps, { fetchPlanets })(PlanetList);
