@@ -7,8 +7,16 @@ import PlanetSelected from '../PlanetSelected/PlanetSelected';
 import './PlanetList.styl';
 
 export class PlanetList extends Component {
+  constructor() {
+    super();
+    this.error = false;
+  }
+
   componentWillMount() {
-    this.props.fetchPlanets();
+    this.props.fetchPlanets()
+      .catch(() => {
+        this.error = true;
+      });
   }
 
   selectPlanet = (planet) => {
@@ -16,11 +24,17 @@ export class PlanetList extends Component {
   }
 
   previousPage = () => {
-    this.props.fetchPlanets(this.props.previous);
+    this.props.fetchPlanets(this.props.previous)
+      .catch(() => {
+        this.error = true;
+      });
   }
 
   nextPage = () => {
-    this.props.fetchPlanets(this.props.next);
+    this.props.fetchPlanets(this.props.next)
+      .catch(() => {
+        this.error = true;
+      });
   }
 
   render() {
@@ -28,16 +42,20 @@ export class PlanetList extends Component {
       <Fragment>
 
         <section className="PlanetList">
-
           {
-            this.props.planets.length
+            this.props.planets.length && !this.loadingPlanets
               ? this.props.planets.map(planet => (
                 <Planet
                   planet={planet}
                   key={planet.name}
                   click={() => this.selectPlanet(planet)} />
               ))
-              : (
+              : null
+          }
+
+          {
+            this.error
+              ? (
                 <div className="NoData">
 
                   <h1>
@@ -49,6 +67,7 @@ export class PlanetList extends Component {
 
                 </div>
               )
+              : null
           }
 
           <div className="PageControls">
