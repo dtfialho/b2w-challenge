@@ -9,6 +9,36 @@
     flex-basis: 280px
     transition: .3s
     cursor: pointer
+
     &:hover
       background: rgba(255, 255, 255, 0.2)
-      
+
+  .NoData
+    text-align: center
+    margin-bottom: 30px
+    padding: 15px
+    background: rgba(0, 0, 0, 0.8)
+
+  .PageControls
+    flex-basis: 100%
+    text-align: center
+    margin-top: 20px
+
+    button
+      background: #000
+      color: #fff
+      border: 2px solid #ccc
+      padding: 5px 35px
+      font-size: 1.2rem
+      transition: .3s ease-in-out
+      cursor: pointer
+
+      &.Prev
+        margin-right: 5px
+
+      &:hover:not(:disabled)
+        background: lighten(#000, 20%)
+
+      &:disabled
+        cursor: not-allowed
+        opacity .3
