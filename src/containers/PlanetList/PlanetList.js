@@ -5,6 +5,7 @@ import { fetchPlanets, selectPlanet } from '../../actions';
 import Planet from '../../components/Planet/Planet';
 import PlanetSelected from '../PlanetSelected/PlanetSelected';
 import './PlanetList.styl';
+import { scrollToTop } from '../../helpers';
 
 export class PlanetList extends Component {
   constructor() {
@@ -24,14 +25,20 @@ export class PlanetList extends Component {
   }
 
   previousPage = () => {
+    this.error = false;
+
     this.props.fetchPlanets(this.props.previous)
+      .then(() => scrollToTop(1))
       .catch(() => {
         this.error = true;
       });
   }
 
   nextPage = () => {
+    this.error = false;
+
     this.props.fetchPlanets(this.props.next)
+      .then(() => scrollToTop(1))
       .catch(() => {
         this.error = true;
       });
