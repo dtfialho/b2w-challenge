@@ -5,6 +5,8 @@
 
 > Repositório para o desafio de frontend para a B2W
 
+> Link para o projeto em produção [https://dtfialho.github.io/b2w-challenge/](https://dtfialho.github.io/b2w-challenge/)
+
 ## Como executar
 
 Clone o repositório
