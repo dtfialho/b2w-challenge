@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/dtfialho/b2w-challenge.svg?branch=master)](https://travis-ci.org/dtfialho/b2w-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/dtfialho/b2w-challenge/badge.svg?branch=master)](https://coveralls.io/github/dtfialho/b2w-challenge?branch=master)
+
 # b2w-frontend-challenge
 
 > Repositório para o desafio de frontend para a B2W
